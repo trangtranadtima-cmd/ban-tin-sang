@@ -109,6 +109,15 @@ BLOCKED_KEYWORDS = [
     "người mẫu", "nguoi mau", "hoa khôi", "hoa khoi", "nam vương", "nam vuong",
     "rapper", "idol", "phim trường", "scandal", "hot girl", "hot boy",
     "liveshow", "mv ", "vũ trụ điện ảnh", "thảm đỏ", "tham do",
+    # thể thao / bóng đá
+    "world cup", "vô địch", "cầu thủ", "cau thu", "bóng đá", "bong da",
+    "penalty", "phạt đền", "phat den", "thẻ đỏ", "the do", "trọng tài", "trong tai",
+    "messi", "ronaldo", "haaland", "neymar", "mbappe",
+    "fifa", "champions league", "premier league", "la liga", "serie a",
+    "vòng 16", "vong 16", "tứ kết", "tu ket", "bán kết", "ban ket", "chung kết", "chung ket",
+    # xổ số / cá cược
+    "xổ số", "xo so", "vietlott", "kết quả xổ", "ket qua xo", "vé trúng", "ve trung",
+    "giải đặc biệt", "giai dac biet", "lô đề", "lo de",
 ]
 
 # ---------------------------------------------------------------- tiện ích
