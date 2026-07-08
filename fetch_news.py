@@ -273,6 +273,20 @@ def collect():
         undated = [a for a in articles if not a["dt"]]
         keep_undated = undated[:3]
         selected = dated[:MAX_PER_SECTION - len(keep_undated)] + keep_undated
+        # Nguon tap chi (Tatler, BrandsVietnam) dang thua hon bao ngay nen duoc
+        # giu cho toi da 3 tin/muc de khong bi tin nong trong ngay day ra ngoai
+        for rsv_src in ("Tatler", "BrandsVietnam"):
+            have = sum(1 for a in selected if a["source"] == rsv_src)
+            extra = [a for a in articles if a["source"] == rsv_src and a not in selected]
+            extra.sort(key=lambda a: a["dt"] or datetime(1970, 1, 1, tzinfo=VN_TZ), reverse=True)
+            for a in extra[:max(0, 3 - have)]:
+                if len(selected) < MAX_PER_SECTION:
+                    selected.append(a)
+                    continue
+                for i in range(len(selected) - 1, -1, -1):
+                    if selected[i]["source"] not in ("Tatler", "BrandsVietnam"):
+                        selected[i] = a
+                        break
         sections_out.append({**section, "articles": selected})
 
     return sections_out, diagnostics
