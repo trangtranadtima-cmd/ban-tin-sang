@@ -68,7 +68,7 @@ SECTIONS = [
         "id": "tam-ly",
         "title": "Tâm lý & Phong cách sống",
         "feeds": [
-            ("Tatler", "scrape:tatler"),
+            ("Tatler", "https://news.google.com/rss/search?q=site:tatlerasia.com&hl=vi&gl=VN&ceid=VN:vi"),
             ("Vietcetera", "https://vietcetera.com/vn/feed"),
             ("Vietcetera", "https://vietcetera.com/feed"),
             ("Dân Trí",    "https://dantri.com.vn/rss/doi-song.rss"),
@@ -250,6 +250,7 @@ def collect():
             for e in entries:
                 link = (e.get("link") or "").strip()
                 title = strip_html(e.get("title") or "")
+                title = re.sub(r"\s*-\s*Tatler Asia$", "", title)
                 if not link or not title or link in seen_links:
                     continue
                 summary = truncate(strip_html(e.get("summary") or e.get("description") or ""))
